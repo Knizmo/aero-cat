@@ -273,15 +273,6 @@ python3 tools/make_icons.py     # -> app icons + screenshots/app-icon.png
 
 ---
 
-## Lessons learned
-
-- **A phone photo is not a scan.** The lighting is uneven across the page, so one brightness threshold can't work everywhere. Comparing each pixel with the paper right around it fixes that, and the lighter printed grid disappears for free.
-- **Drawings that touch need a human.** A star touched an arm of the galaxy, and the flower stem touched the pot. So each stroke is assigned by hand-placed regions, and a few stray pixels are cleaned by script.
-- **Not everything should be a sprite.** The little speed dashes next to the rocket looked blurry when scaled up, so the warp streaks are drawn as thin pen lines in code instead.
-- **Balance by playing fast-forward.** Bots of different skill levels flew thousands of metres to tune how fast fuel runs out.
-
----
-
 ## Work in progress
 
 **AERO.CAT is not finished.** It's playable from start to finish, but I'm still working on it.
