@@ -164,7 +164,6 @@ Your stardust is saved after every flight. Each stage of the garden gives you a 
 <p align="center">
   <img src="screenshots/original-page.jpg" width="640" alt="The original page of ballpoint-pen doodles">
   <br>
-  <em>The original page: ballpoint pen on French-ruled notebook paper. All the drawings are by me.</em>
 </p>
 
 Every drawing on that page has a job in the game:
