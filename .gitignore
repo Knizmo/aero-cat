@@ -1,0 +1,21 @@
+# Android build outputs (rebuilt by android/build.sh)
+android/build/
+android/assets/
+*.apk
+*.aab
+*.idsig
+
+# Signing keys: never commit these
+*.jks
+*.keystore
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

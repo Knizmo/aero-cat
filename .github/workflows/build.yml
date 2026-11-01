@@ -1,0 +1,37 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Android build tools (Ubuntu packages, no Gradle needed)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y aapt apksigner zipalign android-sdk-platform-23 dalvik-exchange zip
+
+      - name: Build the game and the APK
+        env:
+          # Optional repository secrets. Without them every run signs with a throwaway key.
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          AEROCAT_KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then echo "$KEYSTORE_BASE64" | base64 -d > android/aerocat.jks; fi
+          bash android/build.sh
+
+      - name: Upload AeroCat.apk
+        uses: actions/upload-artifact@v7
+        with:
+          path: android/AeroCat.apk
+          archive: false
+          if-no-files-found: error

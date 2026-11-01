@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#fbfaf3">
+<title>AERO.CAT</title>
+<style>__CSS__</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="app">
+    <canvas id="c"></canvas>
+    <button id="pauseBtn" class="icon hidden" aria-label="Pause">II</button>
+
+    <div id="title" class="screen">
+      <img id="logo" alt="AERO.CAT">
+      <div class="tag">a doodle-powered space flight</div>
+      <div id="bestLine"></div>
+      <div class="btns">
+        <button id="playBtn" class="btn big yellow">Fly!</button>
+        <div class="row">
+          <button id="gardenBtn" class="btn green">Garden</button>
+          <button id="howBtn" class="btn blue">How to play</button>
+        </div>
+      </div>
+      <button id="soundBtn" class="icon" aria-label="Sound">&#9834;</button>
+    </div>
+
+    <div id="over" class="screen card hidden">
+      <div class="panel">
+        <h2 id="overTitle">Crash!</h2>
+        <div class="muted" id="overSub"></div>
+        <div class="stats">
+          <div><b id="oDist">0</b>metres</div>
+          <div><b id="oStars">0</b>stars</div>
+        </div>
+        <div id="oBest" class="muted"></div>
+        <div class="muted" style="margin-top:8px" id="oGardenTxt"></div>
+        <div class="bar"><i id="oBar"></i></div>
+        <div id="oGrowth" class="growth hidden"></div>
+        <div class="btns">
+          <button id="againBtn" class="btn big yellow">Fly again</button>
+          <button id="homeBtn" class="btn">Home</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="pause" class="screen card hidden">
+      <div class="panel">
+        <h2>Paused</h2>
+        <div class="muted" id="pauseInfo"></div>
+        <div class="btns">
+          <button id="resumeBtn" class="btn big yellow">Resume</button>
+          <div class="row">
+            <button id="pSoundBtn" class="btn">Sound: on</button>
+            <button id="quitBtn" class="btn">Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="garden" class="screen card hidden">
+      <div class="panel">
+        <h2>Your garden</h2>
+        <div class="muted">Every star you bring home helps it grow.</div>
+        <div style="font-size:22px;margin-top:6px">Stardust collected: <span class="hl" id="gTotal">0</span></div>
+        <div class="bar"><i id="gBar"></i></div>
+        <div class="muted" id="gNext"></div>
+        <ul class="stages" id="gList"></ul>
+        <div class="btns"><button id="gBack" class="btn yellow">Back</button></div>
+      </div>
+    </div>
+
+    <div id="how" class="screen card hidden">
+      <div class="panel">
+        <h2>How to play</h2>
+        <ul class="how">
+          <li><img data-sprite="rocket"><span>Drag anywhere to steer the AERO.CAT rocket.</span></li>
+          <li><img data-sprite="star_line"><span>Grab stars: they are your <span class="hl">stardust fuel</span>.</span></li>
+          <li><img data-sprite="comet"><span>Dodge comets. Watch for the red <b style="color:#d8333a">!</b> warnings.</span></li>
+          <li><img data-sprite="galaxy"><span>Fly into a galaxy for a <span class="hl">warp</span> boost.</span></li>
+          <li><img data-sprite="catplanet"><span>Touch the cat planet to get a cat shield.</span></li>
+          <li><img data-sprite="flower"><span>Stars you bring home grow your garden and unlock perks.</span></li>
+        </ul>
+        <div class="btns"><button id="hBack" class="btn yellow">Got it!</button></div>
+        <div class="credit">Art drawn by hand in ballpoint pen.</div>
+      </div>
+    </div>
+
+    <div id="toast"></div>
+  </div>
+</div>
+<script>window.AERO_ASSETS = __ASSETS__;</script>
+<script>__JS__</script>
+</body>
+</html>

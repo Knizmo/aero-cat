@@ -1,0 +1,63 @@
+@font-face { font-family: 'Patrick Hand'; src: url(__FONT__) format('woff2'); font-display: block; }
+:root { --ink: #222880; --paper: #fbfaf3; --red: #d8333a; --yellow: #ffe066; --green: #b7e4a0; --blue: #bfdcff; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #e9e6db; overscroll-behavior: none; touch-action: none;
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; font-family: 'Patrick Hand', 'Comic Sans MS', cursive; color: var(--ink); }
+#wrap { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: stretch;
+  background: repeating-linear-gradient(0deg, rgba(120,140,215,.18) 0 1px, transparent 1px 12px), #e9e6db; }
+#app { position: relative; height: 100%; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,.18); background: var(--paper); }
+canvas { display: block; touch-action: none; }
+.hidden { display: none !important; }
+.screen { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; }
+#title { justify-content: flex-start; pointer-events: none; }
+#title .btns { position: absolute; top: 45%; left: 0; right: 0; }
+#title > * { pointer-events: auto; }
+#logo { width: 76%; margin-top: calc(env(safe-area-inset-top, 0px) + 7vh); filter: drop-shadow(0 2px 0 rgba(255,224,102,.9)); animation: bob 3.2s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-6px) rotate(1deg); } }
+.tag { font-size: 19px; margin-top: 4px; opacity: .8; }
+#bestLine { font-size: 18px; margin-top: 2px; }
+.btns { display: flex; flex-direction: column; align-items: center; }
+.btns > * + * { margin-top: 12px; }
+.row { display: flex; }
+.row > * + * { margin-left: 12px; }
+.btn { font-family: inherit; color: var(--ink); background: #fffdf6; font-size: 22px; padding: 6px 18px 8px; cursor: pointer;
+  border: 2.5px solid var(--ink); border-radius: 255px 18px 225px 18px / 18px 225px 18px 255px; box-shadow: 2px 3px 0 rgba(34,40,128,.85);
+  transition: transform .08s; touch-action: manipulation; }
+.btn:active { transform: translate(2px, 2px) rotate(-1deg); box-shadow: 0 1px 0 rgba(34,40,128,.85); }
+.btn.big { font-size: 36px; padding: 4px 46px 8px; }
+.btn.yellow { background: linear-gradient(transparent 12%, var(--yellow) 12%, var(--yellow) 88%, transparent 88%), #fffdf6; }
+.btn.green { background: linear-gradient(transparent 14%, var(--green) 14%, var(--green) 86%, transparent 86%), #fffdf6; }
+.btn.blue { background: linear-gradient(transparent 14%, var(--blue) 14%, var(--blue) 86%, transparent 86%), #fffdf6; }
+.icon { position: absolute; width: 42px; height: 42px; font-family: inherit; font-size: 20px; line-height: 1; color: var(--ink); background: #fffdf6;
+  border: 2.2px solid var(--ink); border-radius: 50% 46% 52% 48% / 48% 52% 46% 50%; cursor: pointer; padding: 0; touch-action: manipulation; }
+#pauseBtn { top: calc(env(safe-area-inset-top, 0px) + 10px); right: 10px; font-weight: bold; letter-spacing: -1px; z-index: 5; }
+#soundBtn { bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); right: 12px; }
+.card { justify-content: center; background: rgba(251,250,243,.55); z-index: 10; }
+.panel { width: 86%; max-width: 380px; max-height: 92%; overflow-y: auto; background: #fffdf6; padding: 16px 18px 18px; text-align: center; position: relative;
+  border: 2.5px solid var(--ink); border-radius: 18px 225px 18px 255px / 255px 18px 225px 18px; box-shadow: 3px 4px 0 rgba(34,40,128,.85);
+  background-image: repeating-linear-gradient(0deg, rgba(120,140,215,.22) 0 1px, transparent 1px 12px); animation: pop .25s ease-out; }
+@keyframes pop { from { transform: scale(.85) rotate(-2deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+.panel h2 { margin: 0 0 4px; font-size: 34px; font-weight: normal; }
+.panel .big { font-size: 46px; line-height: 1; }
+.panel .muted { opacity: .72; font-size: 17px; }
+.panel .btns { margin-top: 14px; }
+.hl { background: linear-gradient(transparent 20%, var(--yellow) 20%, var(--yellow) 85%, transparent 85%); padding: 0 4px; }
+.hl.red { background: linear-gradient(transparent 20%, #ffb3b3 20%, #ffb3b3 85%, transparent 85%); }
+.stats { display: flex; justify-content: center; margin: 8px 0 4px; font-size: 20px; }
+.stats > div + div { margin-left: 22px; }
+.stats b { display: block; font-size: 30px; font-weight: normal; }
+.bar { position: relative; height: 18px; margin: 6px 4px 2px; border: 2px solid var(--ink); border-radius: 12px 4px 12px 4px / 4px 12px 4px 12px; overflow: hidden; background: #fff; }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--green); transition: width 1.2s ease-out; }
+.growth { margin-top: 8px; padding: 6px 8px; font-size: 18px; border: 2px dashed var(--ink); border-radius: 10px; background: #f6fff0; animation: pop .4s ease-out; }
+.stages { text-align: left; margin: 8px 0 0; padding: 0; list-style: none; font-size: 17px; }
+.stages li { display: flex; align-items: center; padding: 3px 0; border-bottom: 1px dashed rgba(34,40,128,.25); }
+.stages li .ck { margin-right: 8px; flex: none; width: 22px; text-align: center; font-size: 18px; }
+.stages li.done { }
+.stages li.locked { opacity: .55; }
+.stages li small { display: block; opacity: .8; font-size: 15px; }
+.how { text-align: left; font-size: 19px; margin: 6px 0 0; padding: 0; list-style: none; }
+.how li { display: flex; align-items: center; padding: 5px 0; }
+.how img { margin-right: 10px; width: 40px; height: 40px; object-fit: contain; flex: none; }
+.credit { font-size: 14px; opacity: .6; margin-top: 10px; }
+#toast { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); font-size: 30px; pointer-events: none; white-space: nowrap; z-index: 4; }
+#rotate-unused { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: none; align-items: center; justify-content: center; background: var(--paper); font-size: 24px; z-index: 50; text-align: center; padding: 20px; }
