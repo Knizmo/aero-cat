@@ -5,7 +5,7 @@
 **A doodle-powered space game for Android.**
 *Fly a little rocket (with a cat on board) from your garden into space, dodge the comets, and grow your garden with the stars you collect.*
 
-**All the art is by me, drawn by hand with a ballpoint pen.**
+**All the art is by me, drawn by hand :).**
 
 🚧 **Work in progress: this game is not finished yet.**
 
