@@ -69,7 +69,9 @@ ImageDraw.Draw(mask).rounded_rectangle([8, 8, big - 8, big - 8], radius=big * 0.
 legacy = Image.new("RGBA", (big, big), (0, 0, 0, 0))
 legacy.paste(im, (0, 0), mask)
 ImageDraw.Draw(legacy).rounded_rectangle([8, 8, big - 8, big - 8], radius=big * 0.2, outline=(34, 40, 128, 255), width=10)
+(ROOT / "screenshots").mkdir(exist_ok=True)
+legacy.save(ROOT / "screenshots" / "app-icon.png", optimize=True)  # the logo shown at the top of the README
 for density, px in [("mdpi", 48), ("hdpi", 72), ("xhdpi", 96), ("xxhdpi", 144), ("xxxhdpi", 192)]:
     (RES / f"mipmap-{density}").mkdir(parents=True, exist_ok=True)
     legacy.resize((px, px), Image.LANCZOS).save(RES / f"mipmap-{density}" / "ic_launcher.png")
-print("icons written to android/res/")
+print("icons written to android/res/ and screenshots/app-icon.png")
