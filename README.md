@@ -2,17 +2,18 @@
 
 <img src="screenshots/app-icon.png" width="220" alt="AERO.CAT app icon">
 
-**A doodle-powered space flight for Android.**
-*Fly a cat-crewed rocket from your garden into space, dodge the comets, and grow the garden with every star you bring home.*
+**A doodle-powered space game for Android.**
+*Fly a little rocket (with a cat on board) from your garden into space, dodge the comets, and grow your garden with the stars you collect.*
 
-**Every drawing in the game was drawn by hand by Kamal Ballage, in ballpoint pen.**
+**All the art is by me, drawn by hand with a ballpoint pen.**
 
+🚧 **Work in progress: this game is not finished yet.**
+
+![Status](https://img.shields.io/badge/Status-work_in_progress-FF9F1C?style=flat-square)
 ![Android](https://img.shields.io/badge/Android-5.0%2B-3DDC84?style=flat-square&logo=android&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-Canvas-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![Java](https://img.shields.io/badge/Java-WebView-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
-![Python](https://img.shields.io/badge/Python-sprite_pipeline-3776AB?style=flat-square&logo=python&logoColor=white)
-![Audio](https://img.shields.io/badge/Web_Audio-synthesized-6E44FF?style=flat-square)
 ![Art](https://img.shields.io/badge/Art-hand--drawn-222880?style=flat-square)
 
 </div>
@@ -27,13 +28,11 @@
 - [Play](#play)
 - [How to play](#how-to-play)
 - [The art](#the-art)
-- [Architecture](#architecture)
-- [Tech stack](#tech-stack)
-- [By the numbers](#by-the-numbers)
+- [How it's made](#hows-it-made)
 - [Repository structure](#repository-structure)
 - [Getting started](#getting-started)
 - [Lessons learned](#lessons-learned)
-- [Limitations and roadmap](#limitations-and-roadmap)
+- [Work in progress](#work-in-progress)
 - [Privacy](#privacy)
 - [Credits](#credits)
 
@@ -41,39 +40,35 @@
 
 ## Overview
 
-Many games start from a style guide. AERO.CAT started from **one page of doodles**: a rocket with a kitten on board, a comet, a galaxy, a cat sitting on a ringed planet, a few stars, a tree and a flower in a pot. They were drawn by **Kamal Ballage** in ballpoint pen on French-ruled notebook paper, photographed, cut out by a script, and turned into a game with plain JavaScript.
+AERO.CAT is a small space game made from **one page of my own doodles**: a rocket with a kitten on board, a comet, a galaxy, a cat sitting on a ringed planet, a few stars, a tree and a flower in a pot. I drew them by hand in ballpoint pen on notebook paper, and they were then cut out of a photo and turned into a game.
 
-A flight has five beats:
+A flight goes like this:
 
-1. **Launch**: the AERO.CAT rocket lifts off from the pad in the garden.
-2. **Collect**: stars are stardust fuel. The engine burns it all the time, so you keep chasing them.
-3. **Dodge**: comets come in at an angle, announced by a red **!** at the edge of the screen.
-4. **Boost**: fly into a galaxy to warp, or touch the cat planet for a cat-bubble shield.
-5. **Grow**: the stardust you bring home grows the garden, and each stage unlocks a perk for the next flight.
+1. **Launch** from the pad in your garden.
+2. **Collect stars.** They are your stardust fuel, and the engine burns it all the time.
+3. **Dodge comets.** A red **!** warns you where the next one is coming from.
+4. **Use the boosts.** Fly into a galaxy to warp, or touch the cat planet for a cat-bubble shield.
+5. **Grow your garden.** The stardust you bring home makes the garden grow and unlocks perks for your next flight.
 
-> Nothing in the game was redrawn or traced. The sprites are the original pen lines. The only additions are a paper-white fill behind each drawing and a light highlighter tint.
+> **Work in progress.** The game is playable, but it isn't finished. Things will change, and there are rough edges. See [Work in progress](#work-in-progress).
 
 ---
 
 ## What makes it special
 
-**▸ Every sprite is a real doodle.** All 14 sprites were cut out of one photographed page. The pen texture, the hatching and the wobbly lines are the original strokes, not a "sketchy" filter.
+**▸ Real doodles.** Every picture in the game is one of my drawings, with the original pen lines. The only things added are a paper-white fill behind each drawing and a light highlighter colour.
 
-**▸ A garden that remembers.** Stardust carries over between flights. The sprout becomes a daisy, the tree grows through six stages, and each stage unlocks a perk. The home screen is the save file.
+**▸ A garden that grows.** The stardust you collect is saved. The sprout becomes a daisy, the tree gets bigger, and each stage unlocks a perk.
 
-**▸ A cat that saves you.** The cat planet gives you a cat-bubble shield that absorbs one comet hit. When it does, a **"saved by the cat!"** pops up.
+**▸ A cat that saves you.** The cat planet gives you a shield that blocks one comet. When it does, you see **"saved by the cat!"**.
 
-**▸ Fair warnings.** Every comet is announced about a second early, by a red **!** at the exact edge it will enter from, with an arrow showing which way it's flying. Comet showers always leave one gap.
+**▸ Fair warnings.** Every comet is announced about a second early, at the edge of the screen where it will come in.
 
-**▸ Stars are fuel, not just points.** The engine burns stardust constantly (about twelve seconds of fuel without any stars), so you can't just hide from comets. Star patterns (zigzags, rings, forks with a big star on one side) make you choose a route.
+**▸ Stars are fuel.** The engine runs out of stardust in about twelve seconds, so you always have a reason to go for the stars.
 
-**▸ Everything you hear is synthesized.** The music, the star chimes, the warp whoosh and even the meow are generated live with the Web Audio API. The game contains no audio files.
+**▸ Handmade sound.** The music and the sound effects (even the meow) are made inside the game. There are no audio files.
 
-**▸ One file, zero dependencies.** The whole game (code, sprites, font) is a single ~600 KB HTML file with no libraries. The Android app is that file inside a WebView.
-
-**▸ An APK without Gradle.** `android/build.sh` assembles the APK from a handful of command-line tools. The build is one short script, and the GitHub workflow needs no SDK setup.
-
-**▸ A sprite pipeline you can re-run.** `tools/make_sprites.py` rebuilds every sprite from the original photo, pixel for pixel.
+**▸ Small and simple.** The whole game is one file of about 600 KB, and the Android app is about 640 KB.
 
 ---
 
@@ -98,17 +93,17 @@ A flight has five beats:
 
 ## Play
 
-**Android**
+**On Android**
 
 1. Open the [Actions](../../actions) tab, pick the latest successful **Build APK** run, and download `AeroCat.apk` from **Artifacts** (GitHub asks you to sign in).
 2. Open the file on your phone and allow installs from that app when Android asks.
 3. Play Protect may warn about an unknown developer, because the app is signed with a personal key. Tap **Install anyway**.
 
-Works on Android 5.0 and newer.
+It works on Android 5.0 and newer.
 
-**Browser**
+**In a browser**
 
-[`docs/index.html`](docs/index.html) is the entire game in one file: download it and open it in any browser. To play it online, turn on GitHub Pages (**Settings → Pages → Deploy from a branch → `main` / `/docs`**), and it will be served at `https://knizmo.github.io/aero-cat/`.
+[`docs/index.html`](docs/index.html) is the whole game in one file: download it and open it in any browser. To play it online, turn on GitHub Pages (**Settings → Pages → Deploy from a branch → `main` / `/docs`**). GitHub then shows you the link to the game.
 
 ---
 
@@ -134,11 +129,11 @@ Works on Android 5.0 and newer.
   </tr>
   <tr>
     <td align="center"><img src="art/sprites/galaxy.png" width="70" alt=""><br><b>Galaxy</b></td>
-    <td>Fly into the swirl for <b>3 seconds of warp</b>: 2.4× speed, nothing can hurt you, nearby stars are pulled in, and comets you touch are smashed for <b>+2</b> each.</td>
+    <td>Fly into the swirl for <b>3 seconds of warp</b>: you go faster, nothing can hurt you, nearby stars are pulled in, and comets you touch are smashed for <b>+2</b> each.</td>
   </tr>
   <tr>
     <td align="center"><img src="art/sprites/catplanet.png" width="80" alt=""><br><b>Cat planet</b></td>
-    <td>Touch it for a <b>cat-bubble shield</b> that absorbs one comet hit. If you already have a shield, you get <b>+3</b> stardust instead.</td>
+    <td>Touch it for a <b>cat-bubble shield</b> that blocks one comet. If you already have a shield, you get <b>+3</b> stardust instead.</td>
   </tr>
   <tr>
     <td align="center"><img src="art/sprites/flame.png" width="40" alt=""><br><b>Out of fuel</b></td>
@@ -148,7 +143,7 @@ Works on Android 5.0 and newer.
 
 ### The garden
 
-Stardust is saved after every flight. Each stage of the garden unlocks a perk that applies to every flight after it.
+Your stardust is saved after every flight. Each stage of the garden gives you a perk for all the flights after it.
 
 | Stardust | Stage | Perk |
 |---:|---|---|
@@ -167,7 +162,7 @@ Stardust is saved after every flight. Each stage of the garden unlocks a perk th
 <p align="center">
   <img src="screenshots/original-page.jpg" width="640" alt="The original page of ballpoint-pen doodles">
   <br>
-  <em>The original page: ballpoint pen on French-ruled notebook paper. All drawings by Kamal Ballage.</em>
+  <em>The original page: ballpoint pen on French-ruled notebook paper. All the drawings are by me.</em>
 </p>
 
 Every drawing on that page has a job in the game:
@@ -175,104 +170,31 @@ Every drawing on that page has a job in the game:
 | Drawing | Becomes |
 |---|---|
 | <img src="art/sprites/rocket.png" width="49" alt=""> | **The AERO.CAT rocket**, the player's ship. Its flame is cut out separately so it can flicker, and its hand-lettered name became the title logo |
-| <img src="art/sprites/comet.png" width="39" alt=""> | **The comet**, the hazard. Turned so its tail points straight up |
-| <img src="art/sprites/galaxy.png" width="86" alt=""> | **The galaxy**, the warp portal. It spins slowly |
-| <img src="art/sprites/catplanet.png" width="95" alt=""> | **The cat planet**, the shield pickup. It bobs and purrs (well, meows) |
-| <img src="art/sprites/star_line.png" width="51" alt=""> <img src="art/sprites/star_big.png" width="61" alt=""> <img src="art/sprites/star_small.png" width="35" alt=""> <img src="art/sprites/star_tiny.png" width="33" alt=""> | **The stars**, the fuel and the score. Four doodled stars, four sizes of reward |
+| <img src="art/sprites/comet.png" width="39" alt=""> | **The comet**, the thing to dodge |
+| <img src="art/sprites/galaxy.png" width="86" alt=""> | **The galaxy**, the warp boost. It spins slowly |
+| <img src="art/sprites/catplanet.png" width="95" alt=""> | **The cat planet**, the shield pickup. It bobs up and down and meows when you touch it |
+| <img src="art/sprites/star_line.png" width="51" alt=""> <img src="art/sprites/star_big.png" width="61" alt=""> <img src="art/sprites/star_small.png" width="35" alt=""> <img src="art/sprites/star_tiny.png" width="33" alt=""> | **The stars**, your fuel and your score. Four doodled stars, four sizes of reward |
 | <img src="art/sprites/sprout.png" width="75" alt=""> <img src="art/sprites/flower.png" width="55" alt=""> <img src="art/sprites/pot.png" width="128" alt=""> | **The flower pot**, split into pot, sprout and daisy: the first two garden stages |
 | <img src="art/sprites/tree.png" width="99" alt=""> | **The tree**, which grows with your stardust |
 
-`tools/make_sprites.py` does the cutting:
+The drawings were turned into game sprites by a small script, `tools/make_sprites.py`:
 
-```mermaid
-flowchart TB
-    A["Phone photo of the page"] --> B["Stand it upright, even out the lighting"]
-    B --> C["Keep only the dark ink<br/>(the grid and pencil drop out)"]
-    C --> D["Assign every stroke to one drawing"]
-    D --> E["Paper fill + highlighter tint"]
-    E --> F["Crop, rotate, scale"]
-    F --> G["Sprites: PNG masters + WebP"]
-```
-
-1. **Lighting.** The photo is turned upright and the paper's brightness is estimated with a wide percentile filter, so shadows and the phone's lighting cancel out.
-2. **Ink.** Ink is whatever is much darker than the local paper. The printed grid and the old pencil marks are lighter, so they drop out, and what remains becomes a soft alpha mask that keeps the pen texture.
-3. **Ownership.** Every stroke is assigned to one drawing using hand-placed regions.
-4. **Cut-out.** Each drawing is filled with paper white behind the ink, so it reads as a cut-out, and gets a light highlighter wash (yellow stars, green leaves, a blue planet, a terracotta pot).
-5. **Output.** The sprite is cropped, rotated if needed and scaled. Lossless masters go to `art/sprites/`, the WebP files the game uses go to `game/assets/`, and anchor points (like where the flame attaches to the rocket) go to `art/sprites/meta.json`.
+1. It stands the photo upright and evens out the lighting.
+2. It keeps only the dark ballpoint ink. The printed grid and the old pencil marks are lighter, so they disappear.
+3. It works out which drawing every stroke belongs to.
+4. It fills each drawing with paper white and adds a light highlighter colour (yellow stars, green leaves, a blue planet, a terracotta pot).
+5. It crops, turns and scales each sprite. The lossless originals go to `art/sprites/`, and the smaller files the game uses go to `game/assets/`.
 
 ---
 
-## Architecture
+## How it's made
 
-```mermaid
-flowchart TB
-    subgraph Art["Art pipeline · Python"]
-        P["Photo of the doodles"] --> M["make_sprites.py"]
-        M --> S["14 sprites · WebP"]
-    end
-    subgraph Game["Game · plain JavaScript"]
-        I["Touch and keyboard"] --> U["Update loop"]
-        U --> R["Canvas renderer"]
-        U --> A["Web Audio synth"]
-        U --> V["Saves"]
-    end
-    S --> B["build.py"]
-    Game --> B
-    B --> H["docs/index.html<br/>one self-contained file"]
-    H --> W["Any browser · GitHub Pages"]
-    H --> D["Android app · WebView"]
-    D -. "AeroNative bridge:<br/>save · vibrate · back · pause" .-> H
-```
+- **The game** is plain JavaScript drawn on an HTML canvas. All the code, pictures and the font are bundled into a single HTML file.
+- **The Android app** is a small Java wrapper (a WebView) around that same file. It adds saving, vibration, and the Back button. The same file also runs in a normal browser.
+- **The APK** is built by one short script, with no Gradle, and GitHub builds it for you every time you push.
+- **The sprites** are made from the photo by a small Python script.
 
-A flight is a small state machine:
-
-```mermaid
-stateDiagram-v2
-    state "Flight (grab stars, dodge comets)" as Flight
-    [*] --> Title
-    Title --> Launch: Fly!
-    Launch --> Flight: ignition
-    Flight --> Paused: pause
-    Paused --> Flight: resume
-    Flight --> Crash: comet or no fuel
-    Crash --> GameOver
-    GameOver --> Launch: Fly again
-    GameOver --> Title: Home
-```
-
-**Design choice: a WebView around one HTML file, not a native app.** The same code runs in a browser, on GitHub Pages and inside the APK. The only native code is a ~140-line Java activity that provides saves (SharedPreferences), vibration, pause when the app goes to the background, and the Back button.
-
-**Design choice: the world is endless but fair.** Stars come in hand-designed patterns (lines, zigzags, sine sweeps, rings, forks, risky lone stars). Comet frequency and speed rise with distance, and the first comets don't arrive until a few seconds in.
-
----
-
-## Tech stack
-
-| Component | Role |
-|---|---|
-| **HTML5 Canvas 2D** | Rendering, with parallax notebook paper that turns slightly bluer as you climb |
-| **Vanilla JavaScript** | The whole game: physics, spawning, collisions, UI, saves |
-| **Web Audio API** | Live-synthesized music and sound effects |
-| **Java · Android WebView** | The APK: full screen, saves, haptics, lifecycle |
-| **aapt2 · javac · dx · zipalign · apksigner** | APK build without Gradle (signing: v1 + v2 + v3) |
-| **Python · NumPy · SciPy · OpenCV · Pillow · Matplotlib** | Sprite and icon pipeline |
-| **GitHub Actions** | Builds the APK on every push |
-| **Patrick Hand** | The handwriting font for the interface |
-
----
-
-## By the numbers
-
-| | |
-|---|---|
-| Hand-drawn sprites | 14 |
-| Game code | 1 file, ~1,200 lines of plain JavaScript |
-| Web build | ~600 KB, one HTML file with everything inlined |
-| Android APK | ~640 KB |
-| Minimum Android | 5.0 (API 21) |
-| Permissions | 1 (vibration) |
-| Runtime dependencies | 0 |
-| Audio files | 0 |
+Built with: HTML5 Canvas, vanilla JavaScript, Web Audio, Java (Android WebView), Python (NumPy, SciPy, OpenCV, Pillow), GitHub Actions, and the Patrick Hand font.
 
 ---
 
@@ -285,20 +207,20 @@ aero-cat/
 │   ├── assets/              the 14 sprites (WebP)
 │   ├── font/                Patrick Hand + its licence
 │   └── build.py             bundles everything into docs/index.html
-├── docs/index.html          the built game, one file (also served by GitHub Pages)
+├── docs/index.html          the built game, one file (also used by GitHub Pages)
 ├── android/
-│   ├── src/                 MainActivity.java (WebView host + native bridge)
+│   ├── src/                 MainActivity.java (WebView + saving, vibration, Back button)
 │   ├── res/                 launcher icons and theme
 │   ├── AndroidManifest.xml
-│   └── build.sh             builds and signs AeroCat.apk, no Gradle
+│   └── build.sh             builds and signs AeroCat.apk
 ├── art/
 │   ├── original-drawing.jpg the photo of the original doodles
-│   └── sprites/             lossless sprite masters + meta.json (anchors)
+│   └── sprites/             the sprites, full quality, plus meta.json
 ├── tools/
 │   ├── make_sprites.py      photo -> sprites
-│   ├── make_icons.py        sprites -> launcher icons and README logo
+│   ├── make_icons.py        sprites -> app icons
 │   └── requirements.txt
-├── screenshots/             README images
+├── screenshots/             images used in this README
 └── .github/workflows/
     └── build.yml            builds the APK on every push
 ```
@@ -307,106 +229,102 @@ aero-cat/
 
 ## Getting started
 
-### Prerequisites
-
-| To do this | You need |
-|---|---|
-| Play or rebuild the web version | A browser. Python 3 to rebuild (no packages) |
-| Build the APK | Ubuntu, Debian or WSL, with the packages below |
-| Regenerate the sprites | Python 3 and `pip install -r tools/requirements.txt` |
-
 ### Run it in a browser
 
-Open `docs/index.html`. To rebuild it after changing anything in `game/`:
+Open `docs/index.html`. If you change anything in `game/`, rebuild it with Python 3 (no extra packages needed):
 
 ```bash
 python3 game/build.py        # -> docs/index.html
 ```
 
-Commit the rebuilt `docs/index.html` together with your changes, so GitHub Pages serves the latest version.
+Commit the new `docs/index.html` together with your changes, so GitHub Pages shows the latest version.
 
 ### Build the Android APK
+
+You need Ubuntu, Debian or WSL (on Windows) with these packages:
 
 ```bash
 sudo apt install aapt apksigner zipalign android-sdk-platform-23 dalvik-exchange default-jdk-headless zip python3
 bash android/build.sh        # -> android/AeroCat.apk
 ```
 
-On Windows, run this inside WSL (Ubuntu). Or let GitHub build it: every push to `main` runs `.github/workflows/build.yml`, and the APK appears under that run's **Artifacts**.
+Or let GitHub do it: every push to `main` runs `.github/workflows/build.yml`, and the APK appears under that run's **Artifacts**.
 
 ### Signing
 
-The signing key is never committed (`*.jks` is in `.gitignore`). `build.sh` signs with `android/aerocat.jks` and creates it on the first build (default password `aerocat-pass`; set `AEROCAT_KEYSTORE_PASS` before the first build to pick your own). Keep that file safe and backed up: Android only installs an update over an existing install if both are signed with the same key.
+The signing key is never uploaded (`*.jks` is in `.gitignore`). `build.sh` signs with `android/aerocat.jks` and creates it the first time you build. Keep that file safe: Android only installs an update over an existing install if both were signed with the same key.
 
 To sign the GitHub builds with your own key, add two repository secrets (**Settings → Secrets and variables → Actions**):
 
 - `KEYSTORE_BASE64`: the output of `base64 -w0 android/aerocat.jks`
 - `KEYSTORE_PASSWORD`: the keystore password
 
-Without them, each GitHub build is signed with a new throwaway key. That's fine for testing, but you have to uninstall the previous version before installing a new one.
+Without them, each GitHub build uses a new throwaway key. That's fine for testing, but you have to uninstall the old version before installing a new one.
 
-### Sprites and icons
+### Remake the sprites and icons
 
 ```bash
 pip install -r tools/requirements.txt
 python3 tools/make_sprites.py   # photo -> art/sprites/*.png + game/assets/*.webp
-python3 tools/make_icons.py     # -> android/res launcher icons + screenshots/app-icon.png
+python3 tools/make_icons.py     # -> app icons + screenshots/app-icon.png
 ```
-
-With the same library versions, running both reproduces the shipped sprites and icons pixel for pixel.
 
 ---
 
 ## Lessons learned
 
-What came up while turning a photo into a game, and what it taught:
-
-- **A phone photo is not a scan.** The lighting is uneven across the page, so one fixed brightness threshold would have to choose between losing the faint hatching and keeping the shadows. Comparing each pixel with the paper brightness *around it* avoids the choice, and the lighter printed grid disappears for free.
-- **Drawings that touch need a human.** A star touched an arm of the galaxy, and the flower stem touched the pot rim. Strokes are therefore assigned to drawings with hand-placed regions, and the last few stray pixels are cleaned by script.
-- **Not everything should be a sprite.** The three little speed dashes next to the rocket looked like blurry smudges once scaled up for the warp effect, so warp streaks are drawn as thin pen lines in code instead.
-- **Balance by simulation.** Bots of four skill levels played thousands of metres in fast-forward. The first pass was too generous with fuel, so star refills went down and the burn rate went up, until the tank runs dry in about twelve seconds without stars.
-- **Sound by measurement.** Every effect was rendered offline and its loudness measured. The warning beeps and the warp whoosh turned out to be nearly inaudible next to the crash, so they were raised.
-- **The APK doesn't need Gradle.** The environment the game was built in couldn't download the Android SDK or Gradle, so the APK is assembled from distro packages instead. It turned out simpler: one short script, and the CI workflow only needs `apt install`.
+- **A phone photo is not a scan.** The lighting is uneven across the page, so one brightness threshold can't work everywhere. Comparing each pixel with the paper right around it fixes that, and the lighter printed grid disappears for free.
+- **Drawings that touch need a human.** A star touched an arm of the galaxy, and the flower stem touched the pot. So each stroke is assigned by hand-placed regions, and a few stray pixels are cleaned by script.
+- **Not everything should be a sprite.** The little speed dashes next to the rocket looked blurry when scaled up, so the warp streaks are drawn as thin pen lines in code instead.
+- **Balance by playing fast-forward.** Bots of different skill levels flew thousands of metres to tune how fast fuel runs out.
 
 ---
 
-## Limitations and roadmap
+## Work in progress
 
-**Limitations**
+**AERO.CAT is not finished.** It's playable from start to finish, but I'm still working on it.
+
+**What works today**
+
+- Flying, stars, comets, warnings, the galaxy warp and the cat shield
+- The garden that grows, with perks
+- Saving your best distance and stardust
+- Sound, music and vibration
+- Building the APK on GitHub
+
+**Rough edges**
 
 - Portrait only
-- Mostly tested in a phone-sized browser. Reports from more real Android devices are welcome
-- Speed depends on the device's WebView
-- The APK is signed with a personal key, so installing it needs "unknown sources" and may trigger a Play Protect warning
-- Progress is saved on the device only: no cloud backup, no leaderboard
+- Mostly tested in a phone-sized browser, so more testing on real Android phones is needed
+- No leaderboard and no cloud save
+- Installing the APK shows an "unknown developer" warning
 
 **Ideas for later**
 
-- More of Kamal's doodles: new hazards, new pickups, new stages for the garden
-- A daily challenge with the same stars and comets for everyone
-- A local leaderboard
-- French and Arabic interface
-- A Play Store release with a proper release key
+- More of my doodles: new things to dodge, new pickups, new garden stages
+- A daily challenge, the same for everyone
+- A leaderboard
+- French and Arabic text
+- A Play Store release
 
 ---
 
 ## Privacy
 
 - The app asks for **one** permission: vibration.
-- It has no internet permission. It never sends anything anywhere, and has no ads and no analytics.
-- Your best distance, your stardust and your sound setting are stored on your device.
-- The font and every sprite are bundled in the app, so nothing is downloaded when you play.
-- No signing key or secret is committed to this repository.
+- It has no internet permission, so it never sends anything anywhere. No ads, no tracking.
+- Your best distance, your stardust and your sound setting stay on your phone.
+- Nothing is downloaded while you play: the font and every sprite are inside the app.
 
 ---
 
 ## Credits
 
-**Author and artist**: Kamal Ballage ([@Knizmo](https://github.com/Knizmo)). All the drawings in this game are Kamal's own, hand-drawn in ballpoint pen on French-ruled notebook paper.
+**Art**: all the drawings are by me, drawn by hand in ballpoint pen on French-ruled notebook paper.
 
 **Font**: [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter, SIL Open Font License 1.1 (`game/font/OFL.txt`).
 
-**Sound**: music and effects are synthesized live with the Web Audio API.
+**Sound**: the music and effects are made live with the Web Audio API.
 
 ---
 
