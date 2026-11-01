@@ -7,7 +7,7 @@
 
 **All the art is by me, drawn by hand :).**
 
-🚧 **Work in progress: this game is not finished yet.**
+**[▶ Play it now in your browser](https://knizmo.github.io/aero-cat/)**
 
 ![Status](https://img.shields.io/badge/Status-work_in_progress-FF9F1C?style=flat-square)
 ![Android](https://img.shields.io/badge/Android-5.0%2B-3DDC84?style=flat-square&logo=android&logoColor=white)
@@ -103,7 +103,9 @@ It works on Android 5.0 and newer.
 
 **In a browser**
 
-[`docs/index.html`](docs/index.html) is the whole game in one file: download it and open it in any browser. To play it online, turn on GitHub Pages (**Settings → Pages → Deploy from a branch → `main` / `/docs`**). GitHub then shows you the link to the game.
+**[▶ Play AERO.CAT in your browser](https://knizmo.github.io/aero-cat/)**
+
+It works on a phone too: just open the link. [`docs/index.html`](docs/index.html) is the whole game in one file, so you can also download it and play offline.
 
 ---
 
